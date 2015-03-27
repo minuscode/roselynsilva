@@ -19,7 +19,9 @@ baseurl: "http://www.roselynsilva.com"
 
 markdown: redcarpet
 highlighter: pygments
-permalink: /:title/
+#permalink: /:title/
+permalink: none
+
 
 # Set the Sass partials directory, as we're using @imports
 sass:
