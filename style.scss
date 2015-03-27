@@ -146,7 +146,7 @@ footer{float: left; width: 100%; background-color: $footer-background; color: bl
     li{ float: left; margin-left:10px; @include vertical_align;
       &:first-child{margin-left:0;}
     }
-    .social-icon{float: left;width: 37px; height: 37px; background-image: url('../img/social-links.png'); background-repeat: no-repeat; @include transition(all 300ms ease);}
+    .social-icon{float: left;width: 37px; height: 37px; background-image: url('img/social-links.png'); background-repeat: no-repeat; @include transition(all 300ms ease);}
     .icon-facebook{background-position: 0 -49px;
       &:hover{background-position: 0 0px;}
     }
