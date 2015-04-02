@@ -14,7 +14,7 @@
 /* BASE RULES */
 /**************/
 
-body {width:100%; height: 100%; background-color: #FFF; font-family: $helvetica-light;}
+body {width:100%; height: 100%; background-color: #FFF; font-family: $helvetica-normal;}
 
 *{box-sizing: border-box;}
 
@@ -29,11 +29,13 @@ a{cursor: pointer;}
 .wrapper{float: left;width: 100%; padding: 0px 0px 50px;}
 
 header{position: relative; height: 110px;}
-.logo{float:left;}
+.logo{float:left; width:250px;
+  img{width:100%;}
+}
 nav {widht:100%; @include vertical_align;
   ul{text-align: right; padding: 0px; float: right;
-    li{width: auto; display: inline-block; margin-left: 30px;}
-    a{position:relative; overflow:hidden; font-size: 15px; color: #000; text-transform: uppercase; @include transition(all 300ms ease); padding-bottom:3px; font-family:$helvetica-bold;
+    li{width: auto; display: inline-block; margin-left: 20px;}
+    a{position:relative; overflow:hidden; font-size: 15px; font-weight:700; color: #000; @include transition(all 300ms ease); padding-bottom:3px; font-family:$helvetica-normal;
       &:hover{color:$active-pink;}
       &:before, &:after{content:''; position: absolute; bottom:0; width:0; height:2px; background-color: $active-pink;@include transition(all 500ms ease);}
       &:after{right:-2px;}
@@ -52,20 +54,10 @@ nav {widht:100%; @include vertical_align;
 .half-block-50{position:relative; float:left; width:50%;}
 
 
-.top-num{position: absolute; top:0; right:0; z-index: 1; width: 60px; height: 60px; line-height:60px;
-        text-align: center; background-color: #FFF; color:$active-pink; font-size:30px; font-family: $helvetica-bold;}
-
-
 .banner{
   width: 100%;
     figcaption{p{width:600px / 1320px * 100%; margin:0 auto;}}
 }
-
-
-
-
-
-
 
 
 .image-holder{position: relative; float: left; margin-bottom:30px; overflow:hidden;
@@ -73,24 +65,34 @@ nav {widht:100%; @include vertical_align;
 
   img{@include transition(all 300ms ease);}
 
-  figcaption{position: absolute; bottom:-100%; left:-100%; width:100%; height:100%; z-index:2; padding:30px;background-color: black; color:white;
-    //@include animation-reverse(animation-reverse, 300ms);
-    @include opacity(1);
-    @include transition(all 300ms ease);
+  figcaption{position: absolute; top:-100%; left:-100%; width:100%; height:100%; z-index:2; padding:75px;background-color: black;
 
-      p{ padding: 30px; text-align:center; font-size:24px; line-height:30px; @include vertical_align; text-transform: uppercase; }
+        @include opacity(0);
+        @include transition(all 300ms ease, left 300ms, top 300ms, opacity 300ms);
+
+      p{text-align:center; font-size:18px; font-weight:700; line-height:25px; @include vertical_align; top:65%;
+
+        @include opacity(0);
+        @include transition(all 300ms ease-in-out, top 400ms, opacity 600ms);
+
+      }
   }
 
-  .image-anim-holder{position: absolute;  bottom:0; left:0; width:100%; height:300px; background-color:transparent;}
+  .image-anim-holder{position: absolute;  bottom:0; left:0; width:100%; height:300px; background-color:transparent; overflow:hidden;}
     .image-anim-box{position: absolute; bottom:0; left:0; width:75px; height:75px; z-index:3;
-      //@include box-animation-reverse(box-animation-reverse, 300ms, 300ms);
-      @include transition(all 300ms ease);
+      @include transition(all 300ms ease, bottom 300ms, margin-bottom 300ms);
+      @include transition-delay(100ms);
     }
     &:hover{
-      figcaption{bottom:0%; left:0%;}
+      figcaption{top:0; left:0; @include opacity(1); @include transition-delay(300ms);
+        p{top:50%; @include opacity(1); @include transition-delay(600ms);}
+      }
       .image-anim-box{bottom:100%; margin-bottom:-75px;}
     }
 }
+
+
+
 
 
 .pink-box{
@@ -123,6 +125,7 @@ nav {widht:100%; @include vertical_align;
 
 
 .image-holder--text-holder{padding:30px 60px 60px; float:left; width:100%;
+  h1{font-weight:700;}
   ul{display:inline-block;
     li{display:inline-block; width:100%; margin-bottom:45px;
       &:last-child{margin-bottom:0;}
@@ -130,7 +133,7 @@ nav {widht:100%; @include vertical_align;
     }
   }
   p{color: $main-color; display:inline-block; line-height: 25px;
-    span{color:$blue-num; font-size:24px; display:inline-block; margin-right: 5px; font-family: $helvetica-bold;}
+    span{color:$blue-num; font-size:24px; display:inline-block; margin-right: 5px; font-family: $helvetica-normal;}
   }
 }
 
@@ -146,8 +149,8 @@ nav {widht:100%; @include vertical_align;
 
   &:nth-of-type(2){
     .half-block-50{padding:0px 30px 60px;}
-    h1{font-size:50px; color: $active-pink; font-family:$helvetica-bold; margin-bottom:10px;}
-    p{font-size:26px;  font-family:$helvetica-bold; margin-bottom:5px;}
+    h1{font-size:50px; color: $active-pink; font-family:$helvetica-normal; font-weight: 700; margin-bottom:10px;}
+    p{font-size:26px;  font-family:$helvetica-normal;font-weight: 700; margin-bottom:5px; }
   }
 
   .image-holder--text-holder{padding: 30px 0px 0px 30px;
@@ -166,6 +169,69 @@ nav {widht:100%; @include vertical_align;
 }
 
 
+.press-page{
+
+  .half-block-50{width:49%;
+
+      img{width: 100%;}
+
+  }
+
+  .image-holder{ margin:0 0 60px 0;
+    &:last-child{margin:0;}
+    h1{color:$blue-box-2; font-size: 40px; margin-bottom:40px; font-weight: 700;}
+  }
+  .image-holder:nth-child(even){
+    h1{color:$blue-box-2;}
+  }
+
+  .image-holder--text-holder{padding: 65px; min-height:400px; background-color:white;
+
+    &{
+      :before, :after{content:''; position: absolute; bottom:0; left:0; z-index:2;background-color:$yellow-box;}
+      :before{height:90px; width: 13px;}
+      :after{height:13px; width: 90px;}
+    }
+  }
+  .banner{
+      .image-holder--text-holder{position: absolute; bottom:0; left:0; width:645px; min-height:250px;
+          &{
+          :before, :after{background-color:$blue-box-1;}
+          h1{color:$active-pink;}
+        }
+      }
+  }
+
+  .left-half-block{margin-right:2%;
+
+    .image-holder:nth-child(even){
+      h1{color:$active-pink;}
+
+      .image-holder--text-holder{
+        &{
+          :before, :after{background-color:$blue-box-1;}
+        }
+      }
+    }
+  }
+
+  .right-half-block{
+
+    .image-holder:first-child{margin-top:0px;}
+
+    .image-holder:nth-child(odd){
+      h1{color:$active-pink;}
+
+      .image-holder--text-holder{
+        &{
+          :before, :after{background-color:$blue-box-1;}
+        }
+      }
+    }
+  }
+
+
+}
 
 
  /* ------------------------------------ *\
@@ -176,20 +242,29 @@ nav {widht:100%; @include vertical_align;
 
 footer{float: left; width: 100%; background-color: $footer-background; color: black; margin-top:60px; height: 90px; text-align: left; padding: 0 30px;
 
-  .copyright{ position: relative; float:left;@include vertical_align;
+  .copyright{ position: relative; float:left;@include vertical_align; font-size:14px;
     p{float:left; margin-right:5px;}
-    span{font-family: $helvetica-bold; float: left;}
+    span{font-family: $helvetica-normal; font-weight:700; float: left;}
   }
 
   .social-links{position: relative; float: right; height:90px;
     li{ float: left; margin-left:10px; @include vertical_align;
       &:first-child{margin-left:0;}
     }
-    .social-icon{float: left;width: 35px; height: 34px; @include transition(all 300ms ease); overflow: hidden;
-      a{@include transition(all 300ms ease); display:block;}
-      .facebook-hover{color:#3b5998; }
-      .insta-hover{color:#517fa4;}
-      &:hover{a{margin-top:-38px;}}
+    .social-icon{float: left;width: 35px; height: 33px; @include transition(all 300ms ease); overflow: hidden;
+      a{@include transition(all 300ms ease); display:block;
+        span{@include transition(all 300ms ease);}
+      }
+      //.facebook-hover{color:#3b5998; }
+      //.insta-hover{color:#517fa4;}
+      &:hover{
+        a{
+          span.icon-facebook-circle{color:#3b5998;}
+          span.icon-instagram-circle{color:#517fa4;}
+        }
+
+
+      }
     }
 
     // facebook color -   insta -
